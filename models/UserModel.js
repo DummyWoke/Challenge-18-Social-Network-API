@@ -9,31 +9,31 @@ const UserSchema = new Schema(
       minlength: 4,
       required:"Username needed",
     },
-    thoughts: {
+    thoughts: [{
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
       ref:"Thought",
-    },
+    },],
 
     emailaddress: {
       type: String,
       required:"Email needed",
     },
 
-    friends: {
+    friends: [{
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId(),
         ref:"User",
-      },
+      },],
   },
   {
     toJSON: {
-        virtuals: true,
-        getters: true,
+      virtuals: true,
     },
     id: false,
   }
 );
+
 
 const User = model("User", UserSchema);
 
